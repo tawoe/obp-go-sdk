@@ -1,0 +1,127 @@
+# \FirehoseDataApi
+
+All URIs are relative to *https://apisandbox.openbankproject.com*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**GetFastFirehoseAccountsAtOneBank**](FirehoseDataApi.md#GetFastFirehoseAccountsAtOneBank) | **Get** /obp/v5.1.0/management/banks/{BANK_ID}/fast-firehose/accounts | Get Fast Firehose Accounts at Bank
+[**GetFirehoseAccountsAtOneBank**](FirehoseDataApi.md#GetFirehoseAccountsAtOneBank) | **Get** /obp/v5.1.0/banks/{BANK_ID}/firehose/accounts/views/{VIEW_ID} | Get Firehose Accounts at Bank
+[**GetFirehoseCustomers**](FirehoseDataApi.md#GetFirehoseCustomers) | **Get** /obp/v5.1.0/banks/{BANK_ID}/firehose/customers | Get Firehose Customers
+[**GetFirehoseTransactionsForBankAccount**](FirehoseDataApi.md#GetFirehoseTransactionsForBankAccount) | **Get** /obp/v5.1.0/banks/{BANK_ID}/firehose/accounts/{ACCOUNT_ID}/views/{VIEW_ID}/transactions | Get Firehose Transactions for Account
+
+
+# **GetFastFirehoseAccountsAtOneBank**
+> FastFirehoseAccountsJsonV400 GetFastFirehoseAccountsAtOneBank(ctx, bANKID)
+Get Fast Firehose Accounts at Bank
+
+<p>This endpoint allows bulk access to accounts.</p><p>optional pagination parameters for filter with accounts</p><p>Possible custom url parameters for pagination:</p><ul><li>limit=NUMBER ==&gt; default value: 500</li><li>offset=NUMBER ==&gt; default value: 0</li></ul><p>eg1:?limit=100&amp;offset=0</p><ul><li>sort_direction=ASC/DESC ==&gt; default value: DESC.</li></ul><p>eg2:?limit=100&amp;offset=0&amp;sort_direction=ASC</p><p>Authentication is Mandatory</p>
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **bANKID** | **string**| The bank id | 
+
+### Return type
+
+[**FastFirehoseAccountsJsonV400**](FastFirehoseAccountsJsonV400.md)
+
+### Authorization
+
+[directLogin](../README.md#directLogin), [gatewayLogin](../README.md#gatewayLogin)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GetFirehoseAccountsAtOneBank**
+> ModeratedFirehoseAccountsJsonV400 GetFirehoseAccountsAtOneBank(ctx, vIEWID, bANKID)
+Get Firehose Accounts at Bank
+
+<p>Get Accounts which have a firehose view assigned to them.</p><p>This endpoint allows bulk access to accounts.</p><p>Requires the CanUseFirehoseAtAnyBank Role</p><p>To be shown on the list, each Account must have a firehose View linked to it.</p><p>A firehose view has is_firehose = true</p><p>For VIEW_ID try 'owner'</p><p>optional request parameters for filter with attributes<br />URL params example:<br />/banks/some-bank-id/firehose/accounts/views/owner?manager=John&amp;count=8</p><p>to invalid Browser cache, add timestamp query parameter as follow, the parameter name must be <code>_timestamp_</code><br />URL params example:<br /><code>/banks/some-bank-id/firehose/accounts/views/owner?manager=John&amp;count=8&amp;_timestamp_=1596762180358</code></p><p>Authentication is Mandatory</p>
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **vIEWID** | **string**| The view id | 
+  **bANKID** | **string**| The bank id | 
+
+### Return type
+
+[**ModeratedFirehoseAccountsJsonV400**](ModeratedFirehoseAccountsJsonV400.md)
+
+### Authorization
+
+[directLogin](../README.md#directLogin), [gatewayLogin](../README.md#gatewayLogin)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GetFirehoseCustomers**
+> CustomerJsons GetFirehoseCustomers(ctx, bANKID)
+Get Firehose Customers
+
+<p>Get Customers that has a firehose View.</p><p>Allows bulk access to customers.<br />User must have the CanUseFirehoseAtAnyBank Role</p><p>Possible custom url parameters for pagination:</p><ul><li>limit=NUMBER ==&gt; default value: 500</li><li>offset=NUMBER ==&gt; default value: 0</li></ul><p>eg1:?limit=100&amp;offset=0</p><ul><li>sort_direction=ASC/DESC ==&gt; default value: DESC.</li></ul><p>eg2:?limit=100&amp;offset=0&amp;sort_direction=ASC</p><ul><li>from_date=DATE =&gt; example value: 1970-01-01T00:00:00.000Z. NOTE! The default value is one year ago (1970-01-01T00:00:00.000Z).</li><li>to_date=DATE =&gt; example value: 2024-02-05T14:15:55.283Z. NOTE! The default value is now (2024-02-05T14:15:55.283Z).</li></ul><p>Date format parameter: yyyy-MM-dd'T'HH:mm:ss.SSS'Z'(1100-01-01T01:01:01.000Z) ==&gt; time zone is UTC.</p><p>eg3:?sort_direction=ASC&amp;limit=100&amp;offset=0&amp;from_date=1100-01-01T01:01:01.000Z&amp;to_date=1100-01-01T01:01:01.000Z</p><p>Authentication is Mandatory</p>
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **bANKID** | **string**| The bank id | 
+
+### Return type
+
+[**CustomerJsons**](CustomerJSONs.md)
+
+### Authorization
+
+[directLogin](../README.md#directLogin), [gatewayLogin](../README.md#gatewayLogin)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GetFirehoseTransactionsForBankAccount**
+> TransactionsJsonV300 GetFirehoseTransactionsForBankAccount(ctx, vIEWID, aCCOUNTID, bANKID)
+Get Firehose Transactions for Account
+
+<p>Get Transactions for an Account that has a firehose View.</p><p>Allows bulk access to an account's transactions.<br />User must have the CanUseFirehoseAtAnyBank Role</p><p>To find ACCOUNT_IDs, use the getFirehoseAccountsAtOneBank call.</p><p>For VIEW_ID try 'owner'</p><p>Possible custom url parameters for pagination:</p><ul><li>limit=NUMBER ==&gt; default value: 500</li><li>offset=NUMBER ==&gt; default value: 0</li></ul><p>eg1:?limit=100&amp;offset=0</p><ul><li>sort_direction=ASC/DESC ==&gt; default value: DESC.</li></ul><p>eg2:?limit=100&amp;offset=0&amp;sort_direction=ASC</p><ul><li>from_date=DATE =&gt; example value: 1970-01-01T00:00:00.000Z. NOTE! The default value is one year ago (1970-01-01T00:00:00.000Z).</li><li>to_date=DATE =&gt; example value: 2024-02-05T14:15:55.255Z. NOTE! The default value is now (2024-02-05T14:15:55.255Z).</li></ul><p>Date format parameter: yyyy-MM-dd'T'HH:mm:ss.SSS'Z'(1100-01-01T01:01:01.000Z) ==&gt; time zone is UTC.</p><p>eg3:?sort_direction=ASC&amp;limit=100&amp;offset=0&amp;from_date=1100-01-01T01:01:01.000Z&amp;to_date=1100-01-01T01:01:01.000Z</p><p>Authentication is Mandatory</p>
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **vIEWID** | **string**| The view id | 
+  **aCCOUNTID** | **string**| The account id | 
+  **bANKID** | **string**| The bank id | 
+
+### Return type
+
+[**TransactionsJsonV300**](TransactionsJsonV300.md)
+
+### Authorization
+
+[directLogin](../README.md#directLogin), [gatewayLogin](../README.md#gatewayLogin)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

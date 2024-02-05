@@ -1,0 +1,15 @@
+# AdapterInfoJsonV500
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Name** | **string** |  | [default to null]
+**BackendMessages** | [**[]InboundStatusMessage**](InboundStatusMessage.md) |  | [default to null]
+**TotalDuration** | **string** |  | [default to null]
+**Version** | **string** |  | [default to null]
+**Date** | **string** |  | [default to null]
+**GitCommit** | **string** |  | [default to null]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
